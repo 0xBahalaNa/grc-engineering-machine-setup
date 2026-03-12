@@ -11,6 +11,8 @@ sudo dnf install -y \
   jq \
   kernel-devel \
   make \
+  nodejs \
+  npm \
   openssl \
   python3-devel \
   python3-pip \
@@ -76,6 +78,6 @@ sudo dnf install -y podman podman-compose
 # VMware guest tools
 sudo dnf install -y open-vm-tools open-vm-tools-desktop
 
-for cmd in git gh aws terraform opa conftest trivy tfsec checkov podman; do
+for cmd in git gh aws terraform opa conftest trivy tfsec checkov node npm podman; do
   echo "$cmd: $(command -v $cmd && echo 'OK' || echo 'MISSING')"
 done

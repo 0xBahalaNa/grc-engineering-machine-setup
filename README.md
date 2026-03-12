@@ -20,6 +20,7 @@ This toolchain supports a compliance-as-code lifecycle: **audit tools detect** â
 | gnupg2, openssl | Cryptography and signing |
 | htop | System monitoring |
 | jq, yq | JSON/YAML parsing (essential for processing CloudTrail logs, IAM policies, Config evaluations) |
+| nodejs, npm | Node.js runtime and package manager |
 | python3-devel, python3-pip | Python development (primary scripting language) |
 | ShellCheck | Bash linting and static analysis |
 | tmux | Terminal session multiplexing |
