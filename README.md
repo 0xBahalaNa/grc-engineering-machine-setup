@@ -1,12 +1,12 @@
 # GRC Engineering Machine Setup
 
-Fedora workstation provisioning script for a GRC Engineering and compliance-as-code development environment. Installs the full toolchain needed to build, test, and ship cloud security and compliance automation.
+Fedora workstation provisioning script for a GRC Engineering and compliance-as-code development environment. Installs the toolchain I need to build, test, and ship cloud security and compliance automation.
 
 ## Why This Exists
 
-Setting up a compliance engineering workstation from scratch means installing tools across multiple categories — cloud CLIs, infrastructure-as-code, policy-as-code scanners, and security analysis tools. This script automates that setup into a single repeatable run, so a fresh Fedora install goes from bare to fully equipped in minutes.
+Setting up a compliance engineering workstation from scratch means installing tools across several categories: cloud CLIs, infrastructure-as-code, policy-as-code scanners, and security analysis tools. This script automates that into one repeatable run. A fresh Fedora install goes from bare to equipped in minutes.
 
-This toolchain supports a compliance-as-code lifecycle: **audit tools detect** → **config monitors watch** → **remediation tools fix** → **evidence loggers collect** → **OSCAL pipelines format** → **compliance reports visualize**.
+I use these tools for the full compliance-as-code workflow. Audit tools detect findings. Config monitors watch for drift. Remediation tools fix what they can. Evidence loggers collect records. OSCAL pipelines format those records. Compliance reports visualize the result. No single slogan covers that. The script just installs what each step needs.
 
 ## What Gets Installed
 
@@ -40,9 +40,9 @@ This toolchain supports a compliance-as-code lifecycle: **audit tools detect** �
 
 | Tool | Purpose |
 |------|---------|
-| [Checkov](https://www.checkov.io/) | Static analysis for IaC — scans Terraform, CloudFormation, Kubernetes for misconfigurations |
+| [Checkov](https://www.checkov.io/) | Static analysis for IaC. Scans Terraform, CloudFormation, Kubernetes for misconfigurations |
 | [Conftest](https://www.conftest.dev/) | OPA-based configuration testing (Terraform plans, Kubernetes manifests, Dockerfiles) |
-| [OPA](https://www.openpolicyagent.org/) | Open Policy Agent — general-purpose policy engine for Rego policies |
+| [OPA](https://www.openpolicyagent.org/) | Open Policy Agent. General-purpose policy engine for Rego policies |
 | [tfsec](https://aquasecurity.github.io/tfsec/) | Terraform-specific security scanner |
 | [Trivy](https://trivy.dev/) | Vulnerability and misconfiguration scanner for containers, filesystems, and IaC |
 
@@ -56,8 +56,8 @@ This toolchain supports a compliance-as-code lifecycle: **audit tools detect** �
 ## Prerequisites
 
 - **Fedora Linux** (tested on Fedora 43, KDE Spin)
-- **sudo access** — the script installs system packages and writes to `/usr/local/bin`
-- **Internet connection** — downloads binaries and adds third-party repos (HashiCorp, GitHub CLI, Aqua Security)
+- **sudo access**: the script installs system packages and writes to `/usr/local/bin`
+- **Internet connection**: downloads binaries and adds third-party repos (HashiCorp, GitHub CLI, Aqua Security)
 
 ## Usage
 
@@ -73,17 +73,17 @@ The script ends with a verification check that confirms each tool is installed a
 ## Notes
 
 - **Fedora-specific.** Uses `dnf` and Fedora RPM repos. Not directly portable to Ubuntu/Debian without modification.
-- **VMware guest tools** are included because this was built for a VMware-based lab environment. Remove the `open-vm-tools` line if running on bare metal or a different hypervisor.
-- **Checkov** installs via `pip install --break-system-packages`. On Fedora, this is needed because the system Python is externally managed. Consider using a virtual environment if you want isolation.
-- **tfsec** is in maintenance mode — Aqua Security is folding its functionality into Trivy. Included here because some scanning workflows still reference it directly.
+- **VMware guest tools** are included because I built this for a VMware-based lab environment. Remove the `open-vm-tools` line if running on bare metal or a different hypervisor.
+- **Checkov** installs via `pip install --break-system-packages`. On Fedora, this is needed because the system Python is externally managed. Consider a virtual environment if you want isolation.
+- **tfsec** is in maintenance mode. Aqua Security is folding its functionality into Trivy. I still include it because some scanning workflows reference it directly.
 
 ## GRC Engineering Context
 
-This toolchain powers a portfolio of compliance automation projects targeting **NIST 800-53 Rev 5**, **FedRAMP High**, and **CJIS Security Policy v6.0** controls. The tools map to specific compliance activities:
+This toolchain powers a portfolio of compliance automation projects targeting NIST 800-53 Rev 5, FedRAMP High, and CJIS Security Policy v6.0 controls. The tools map to specific compliance activities:
 
 - **Evidence collection:** AWS CLI queries for IAM policies, security group rules, CloudTrail logs, and Config evaluations
 - **Security baselines:** Terraform provisions hardened AWS environments aligned to FedRAMP High requirements
-- **Policy validation:** OPA/Conftest enforce guardrails as code — policies that can be version-controlled, tested, and audited
+- **Policy validation:** OPA/Conftest enforce guardrails as code. Policies that can be version-controlled, tested, and audited
 - **Misconfiguration detection:** Checkov, Trivy, and tfsec catch security issues before deployment, supporting continuous compliance
 - **Reproducibility:** The entire toolchain is scripted, so any auditor or team member can stand up an identical environment
 
