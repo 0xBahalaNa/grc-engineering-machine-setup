@@ -79,7 +79,7 @@ The script ends with a verification check that confirms each tool is installed a
 
 ## GRC Engineering Context
 
-This toolchain powers a portfolio of compliance automation projects targeting NIST 800-53 Rev 5, FedRAMP High, and CJIS Security Policy v6.0 controls. The tools map to specific compliance activities:
+This toolchain powers a portfolio of compliance automation projects targeting NIST 800-53 Rev 5, FedRAMP High, and CJIS Security Policy v6.1 controls. The tools map to specific compliance activities:
 
 - **Evidence collection:** AWS CLI queries for IAM policies, security group rules, CloudTrail logs, and Config evaluations
 - **Security baselines:** Terraform provisions hardened AWS environments aligned to FedRAMP High requirements
