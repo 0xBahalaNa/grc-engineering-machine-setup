@@ -87,6 +87,8 @@ This toolchain powers a portfolio of compliance automation projects targeting NI
 - **Misconfiguration detection:** Checkov, Trivy, and tfsec catch security issues before deployment, supporting continuous compliance
 - **Reproducibility:** The entire toolchain is scripted, so any auditor or team member can stand up an identical environment
 
+CI runs `shellcheck` on every tracked `.sh` file.
+
 ## License
 
 MIT
